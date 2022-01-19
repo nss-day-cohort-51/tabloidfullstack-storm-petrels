@@ -24,9 +24,12 @@ namespace Tabloid.Repositories
                     SELECT p.Id, p.Title, p.Content, p.ImageLocation,
 		            p.CreateDateTime, p.PublishDateTime, p.IsApproved,
 		            p.CategoryId, p.UserProfileId,
+                    c.Name as CatName,
 		            u.Id AS UserId, u.DisplayName, u.FirstName, u.LastName, u.Email,
 		            u.ImageLocation AS UserImage, u.UserTypeId, ut.[Name]
                         FROM    Post p
+                        LEFT JOIN Category c 
+                        ON p.CategoryId = c.Id
                         LEFT JOIN UserProfile u
                         ON p.UserProfileId = u.Id
                         LEFT JOIN UserType ut
@@ -51,7 +54,7 @@ namespace Tabloid.Repositories
                                 Category = new Category()
                                 {
                                     Id = DbUtils.GetInt(reader, "Id"),
-                                    Name = DbUtils.GetString(reader, "Name"),
+                                    Name = DbUtils.GetString(reader, "CatName"),
                                 },
                                 UserProfileID = DbUtils.GetInt(reader, "UserProfileId"),
                                 UserProfile = new UserProfile()
