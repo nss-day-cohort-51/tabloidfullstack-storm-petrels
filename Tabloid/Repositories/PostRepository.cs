@@ -34,6 +34,8 @@ namespace Tabloid.Repositories
                         ON p.UserProfileId = u.Id
                         LEFT JOIN UserType ut
                         ON u.UserTypeId = ut.Id
+                        WHERE p.PublishDateTime < GETDATE()
+                        AND p.IsApproved = 'true'
                         ORDER BY PublishDateTime desc";
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
@@ -49,7 +51,7 @@ namespace Tabloid.Repositories
                                 ImageLocation = DbUtils.GetString(reader, "ImageLocation"),
                                 CreateDateTime = DbUtils.GetDateTime(reader, "CreateDateTIme"),
                                 PublishDateTime = DbUtils.GetDateTime(reader, "PublishDateTime"),
-                                IsApproved = true,
+                                IsApproved = reader.GetBoolean(reader.GetOrdinal("IsApproved")),
                                 CategoryId = DbUtils.GetInt(reader, "CategoryId"),
                                 Category = new Category()
                                 {
