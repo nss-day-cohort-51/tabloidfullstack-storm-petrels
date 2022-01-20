@@ -23,7 +23,7 @@ namespace Tabloid.Repositories
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"SELECT c.Id, c.Subject, c.Content, c.PostId,c.UserProfileId, c.CreateDateTime, c.UserProfileId,
-                                              p.Id as postId, p.Title, u.DisplayName,
+                                              p.Id as postId, p.Title, u.DisplayName
                                           FROM Comment c
                                             Join UserProfile u on c.UserProfileId = u.Id
                                             Join Post p on c.PostId = p.Id
