@@ -50,6 +50,11 @@ namespace Tabloid.Controllers
             return _userProfileRepository.GetByFirebaseUserId(firebaseUserId);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetPostById(int id)
+        {
+            return Ok(_postRepository.GetPostById(id));
+        }
     }
 }
 
@@ -57,4 +62,4 @@ namespace Tabloid.Controllers
 
 
 
-      
+
