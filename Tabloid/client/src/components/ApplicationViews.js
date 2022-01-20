@@ -3,10 +3,17 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import Login from "./Login";
 import Register from "./Register";
 import PostList from "./Post/PostList";
+import PostDetails from "./Post/PostDetails";
 import TagList from "./Tag/TagList";
+<<<<<<< HEAD
 import CommentList from "./Comment/CommentList";
+=======
+import UserProfileList from "./UserProfile/UserProfileList";
+>>>>>>> main
 import { TagForm } from "./Tag/CreateTagForm";
 import CategoryList from "./Category/CategoryList";
+import { DeleteTag } from "./Tag/DeleteTag"
+
 
 export default function ApplicationViews({ isLoggedIn }) {
 
@@ -18,7 +25,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         </Route>
 
         <Route path="/post/:id" exact>
-          {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
+          {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/Category" exact>
@@ -29,13 +36,24 @@ export default function ApplicationViews({ isLoggedIn }) {
           {isLoggedIn ? <TagList /> : <Redirect to="/login" />}
         </Route>
 
+<<<<<<< HEAD
 
         <Route path="/comment/:id" exact>
           {isLoggedIn ? <CommentList /> : <Redirect to="/login" />}
         </Route>
 
+=======
+        <Route path="/UserProfile" exact>
+          {isLoggedIn ? <UserProfileList /> : <Redirect to="/login" />}
+          </Route>
+          
+>>>>>>> main
         <Route path="/tag/create">
           {isLoggedIn ? <TagForm /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/deleteTag/:id">
+          <DeleteTag userparams />
         </Route>
 
         <Route path="/login">

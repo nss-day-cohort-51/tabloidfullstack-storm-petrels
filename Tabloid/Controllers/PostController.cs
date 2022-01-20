@@ -27,6 +27,14 @@ namespace Tabloid.Controllers
             return Ok(_postRepository.GetAll());
         }
 
+<<<<<<< HEAD
       
+=======
+        [HttpGet("{id}")]
+        public IActionResult GetPostById(int id)
+        {
+            return Ok(_postRepository.GetPostById(id));
+        }
+>>>>>>> main
     }
 }
