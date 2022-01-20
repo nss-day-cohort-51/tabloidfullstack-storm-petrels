@@ -10,6 +10,7 @@ import UserProfileList from "./UserProfile/UserProfileList";
 import { TagForm } from "./Tag/CreateTagForm";
 import CategoryList from "./Category/CategoryList";
 import { DeleteTag } from "./Tag/DeleteTag"
+import { PostForm } from "./Post/CreatePostForm"
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -19,6 +20,10 @@ export default function ApplicationViews({ isLoggedIn }) {
       <Switch>
         <Route path="/" exact>
           {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/post/create" exact>
+          {isLoggedIn ? <PostForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/post/:id" exact>
