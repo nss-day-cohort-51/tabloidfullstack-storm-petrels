@@ -18,3 +18,7 @@ export const getAllUserProfiles = () => {
         })
     })
 }
+
+export const getUserProfileById = (id) => {
+    return
+}
