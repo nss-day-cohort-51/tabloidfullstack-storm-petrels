@@ -52,10 +52,10 @@ namespace Tabloid.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        INSERT INTO Category (Name);
+                        INSERT INTO Category (Name)
                         OUTPUT INSERTED.ID
                         VALUES (@Name)";
-                    DbUtils.AddParameter(cmd, "@Name", category.Name);
+                    cmd.Parameters.AddWithValue("@Name", category.Name);
 
                     category.Id = (int)cmd.ExecuteScalar();
                 }
