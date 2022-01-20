@@ -2,7 +2,7 @@ import { getToken } from "./authManager";
 
 const baseUrl = "/api/userProfile";
 
-export const getAllUserProfile = () => {
+export const getAllUserProfiles = () => {
     return getToken().then(token => {
         return fetch(baseUrl, {
             method: "GET",

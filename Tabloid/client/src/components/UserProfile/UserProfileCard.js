@@ -8,7 +8,7 @@ export const UserProfileCard = ({ userProfile }) => {
             <CardBody>
                 <p>User Name : {userProfile.fullName}</p>
                 <p>Display Name : {userProfile.displayName}</p>
-                <p>Type : {userProfile.userType}</p>
+                <p>Type : {userProfile.userType.name}</p>
             </CardBody>
         </Card >
     )

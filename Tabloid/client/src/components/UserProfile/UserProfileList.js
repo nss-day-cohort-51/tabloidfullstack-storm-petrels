@@ -1,21 +1,27 @@
 import React, { useEffect, useState } from "react";
 import UserProfileCard from "./UserProfileCard";
-import { getAllUserProfile } from "../../modules/userProfileManager";
+import { getAllUserProfiles } from "../../modules/userProfileManager";
 
 export const UserProfileList = () => {
-    const [userProfile, setUserProfile] = useState([]);
+    const [userProfiles, setUserProfiles] = useState([]);
 
-    const getUserProfile = () => {
-        getAllUserProfile().then(userProfile => setUserProfile(userProfile));
+    const getUserProfiles = () => {
+        getAllUserProfiles().then(userProfiles => {
+            setUserProfiles(userProfiles)
+        });
     }
     useEffect(() => {
-        getUserProfile();
+        getUserProfiles();
     }, []);
 
+    if (!userProfiles) {
+        return null;
+    }
+
     return (
-        <div>
-            <div>{userProfile.map(user => <UserProfileCard key={user.id} user={user} />)}</div>
-        </div>
+
+        <div>{userProfiles.map(user => <UserProfileCard key={user.id} userProfile={user} />)}</div>
+
     )
 }
 export default UserProfileList;
