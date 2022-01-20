@@ -17,31 +17,31 @@ export const TagForm = () => {
         }
         newTag[event.target.id] = selectedVal
         setTag(newTag)
-
-        const handleClickSaveTag = (event) => {
-            event.preventDefault();
-            addTag(tag)
-                .then(() => history.push("/tag"))
-        }
-
-        return (
-            <>
-                <form className="tag_form">
-                    <h3 className="tag_form_title">Create a new tag</h3>
-                    <fieldset className="name_fieldset">
-                        <div className="form_group">
-                            <label htmlFor="name">Tag name : </label>
-                            <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Tag name" value={tag.name} />
-                        </div>
-                    </fieldset>
-                    <button className="save_tag_button"
-                        onClick={handleClickSaveTag}>
-                        Save
-                    </button>
-                </form>
-            </>
-        )
     }
+
+    const handleClickSaveTag = (event) => {
+        event.preventDefault()
+        addTag(tag)
+            .then(() => history.push("/tag"))
+    }
+
+    return (
+        <>
+            <form className="tag_form">
+                <h3 className="tag_form_title">Create a new tag</h3>
+                <fieldset className="name_fieldset">
+                    <div className="form_group">
+                        <label htmlFor="name">Tag name : </label>
+                        <input type="text" id="name" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Tag name" value={tag.name} />
+                    </div>
+                </fieldset>
+                <button className="save_tag_button"
+                    onClick={handleClickSaveTag}>
+                    Save
+                </button>
+            </form>
+        </>
+    )
 };
 
 export default TagForm;
