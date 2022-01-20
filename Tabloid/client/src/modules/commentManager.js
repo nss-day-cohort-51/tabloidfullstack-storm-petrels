@@ -1,6 +1,6 @@
 import { getToken } from "./authManager";
 
-const baseUrl = "/api/comment";
+const baseUrl = "/api/Comment";
 
 export const getAllCommentsByPost = (id) => {
     return getToken().then(token => {
