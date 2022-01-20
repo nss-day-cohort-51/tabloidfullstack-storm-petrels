@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Tabloid.Repositories;
+using Tabloid.Models;
+using System.Security.Claims;
 
 namespace Tabloid.Controllers
 {
@@ -13,10 +11,12 @@ namespace Tabloid.Controllers
     public class CategoryController : ControllerBase
     {
         private readonly ICategoryRepository _catRepo;
+        private readonly IUserProfileRepository _userProfRepo;
 
-        public CategoryController(ICategoryRepository catRepo)
+        public CategoryController(ICategoryRepository catRepo, IUserProfileRepository userProfRepo)
         {
             _catRepo = catRepo;
+            _userProfRepo = userProfRepo;
         }
 
         [HttpGet]
@@ -24,5 +24,16 @@ namespace Tabloid.Controllers
         {
             return Ok(_catRepo.GetAll());
         }
+
+        [HttpPost]
+        public IActionResult Post(Category category)
+        {
+
+            _catRepo.Add(category);
+            return NoContent();
+                
+        }
+
+       
     }
 }
