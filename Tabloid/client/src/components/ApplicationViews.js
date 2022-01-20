@@ -10,6 +10,7 @@ import UserProfileList from "./UserProfile/UserProfileList";
 import { TagForm } from "./Tag/CreateTagForm";
 import CategoryList from "./Category/CategoryList";
 import { DeleteTag } from "./Tag/DeleteTag"
+import { AddComment } from "./Comment/AddComment";
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -35,6 +36,10 @@ export default function ApplicationViews({ isLoggedIn }) {
 
         <Route path="/comment/:id" exact>
           {isLoggedIn ? <CommentList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/comment/:id/create" exact>
+          {isLoggedIn ? <AddComment /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/UserProfile" exact>
