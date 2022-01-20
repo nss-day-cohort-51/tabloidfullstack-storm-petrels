@@ -49,3 +49,15 @@ export const deleteTag = (id) => {
         })
     })
 }
+
+export const updateTag = (tag) => {
+    return getToken().then(token => {
+        return fetch(`${baseUrl}/tag/${tag.id}`), {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(tag)
+        }
+    })
+}
