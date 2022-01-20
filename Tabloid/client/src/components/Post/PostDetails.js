@@ -4,11 +4,12 @@ import { useEffect, useState } from "react";
 import { getPostById } from "../../modules/postManager";
 import { useParams, useHistory } from "react-router-dom";
 
+
 export const PostDetails = () => {
 
     const history = useHistory();
     const [post, setPost] = useState([]);
-    const {id} = useParams();
+    const { id } = useParams();
 
     const getPost = (id) => {
         getPostById(id).then(setPost);
@@ -18,7 +19,7 @@ export const PostDetails = () => {
         getPost(id);
     }, []);
 
-    if (!post.userProfile){
+    if (!post.userProfile) {
         return null;
     }
 
@@ -41,7 +42,7 @@ export const PostDetails = () => {
                 </ListGroupItem>
             </ListGroup>
             <div>
-                <Button>View Comments</Button>
+                <Button onClick={() => history.push(`/comment/${id}`)}>View Comments</Button>
                 <Button onClick={() => history.push("")} >Back to List</Button>
             </div>
         </>

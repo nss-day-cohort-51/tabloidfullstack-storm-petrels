@@ -13,10 +13,12 @@ namespace Tabloid.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
+        
         private readonly IPostRepository _postRepository;
         public PostController(IPostRepository postRepository)
         {
             _postRepository = postRepository;
+            
         }
 
         [HttpGet]
@@ -25,10 +27,14 @@ namespace Tabloid.Controllers
             return Ok(_postRepository.GetAll());
         }
 
+
+      
+
         [HttpGet("{id}")]
         public IActionResult GetPostById(int id)
         {
             return Ok(_postRepository.GetPostById(id));
         }
+
     }
 }
