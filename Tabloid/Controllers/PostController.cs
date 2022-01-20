@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
 using System;
@@ -33,6 +34,7 @@ namespace Tabloid.Controllers
             return Ok(_postRepository.GetAll());
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult AddPost(Post post)
         {

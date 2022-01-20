@@ -41,7 +41,7 @@ export const PostForm = () => {
             window.alert("please select a category")
         } else {
             addPost(post)
-                .then(() => history.push("/post"))
+                .then(() => history.push("/"))
         }
     }
 
@@ -63,13 +63,13 @@ export const PostForm = () => {
                 </fieldset>
                 <fieldset className="content_fieldset">
                     <div className="form-group">
-                        <label htmlFor="content">What is this post about?</label>
+                        <label htmlFor="content">What is today's date?</label>
                         <input type="date" id="publishDateTime" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="date" value={post.publishDateTime} />
                     </div>
                 </fieldset>
                 <fieldset className="post_fieldset">
                     <div className="form-group">
-                        <label htmlFor="category">What category is this post?  </label>
+                        <label htmlFor="category">What category is this post in?  </label>
                         <select value={post.categoryId} name="categoryId" id="categoryId" onChange={handleControlledInputChange} className="form-control" >
                             <option value="0">Select a Category</option>
                             {categories.map(l => (
