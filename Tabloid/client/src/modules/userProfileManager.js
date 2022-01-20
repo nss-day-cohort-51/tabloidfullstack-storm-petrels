@@ -13,7 +13,7 @@ export const getAllUserProfiles = () => {
             if (res.ok) {
                 return res.json()
             } else {
-                throw new Error("An error occured while retrieving tags")
+                throw new Error("An error occured while retrieving user profiles")
             }
         })
     })
