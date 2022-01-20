@@ -18,6 +18,7 @@ namespace Tabloid.Controllers
     [ApiController]
     public class PostController : ControllerBase
     {
+
         private readonly IPostRepository _postRepository;
         private readonly ICategoryRepository _categoryRepository;
         private readonly IUserProfileRepository _userProfileRepository;
@@ -57,6 +58,7 @@ namespace Tabloid.Controllers
         {
             return Ok(_postRepository.GetPostById(id));
         }
+
     }
 }
 
