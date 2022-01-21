@@ -7,11 +7,14 @@ import PostDetails from "./Post/PostDetails";
 import TagList from "./Tag/TagList";
 import CommentList from "./Comment/CommentList";
 import UserProfileList from "./UserProfile/UserProfileList";
+import UserProfileDetails from "./UserProfile/UserProfileDetails";
 import { TagForm } from "./Tag/CreateTagForm";
 import CategoryList from "./Category/CategoryList";
 import { CreateCategory } from "./Category/CreateCategoryForm";
 import { DeleteTag } from "./Tag/DeleteTag"
+import { AddComment } from "./Comment/AddComment";
 import { PostForm } from "./Post/CreatePostForm"
+import { TagUpdateForm } from "./Tag/UpdateTag"
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -36,7 +39,7 @@ export default function ApplicationViews({ isLoggedIn }) {
         </Route>
 
         <Route path="/createCategory" exact>
-          {isLoggedIn ? <CreateCategory/> : <Redirect to="login"/>}
+          {isLoggedIn ? <CreateCategory /> : <Redirect to="login" />}
         </Route>
 
         <Route path="/tag" exact>
@@ -47,8 +50,20 @@ export default function ApplicationViews({ isLoggedIn }) {
           {isLoggedIn ? <CommentList /> : <Redirect to="/login" />}
         </Route>
 
+        <Route path="/comment/:id/create" exact>
+          {isLoggedIn ? <AddComment /> : <Redirect to="/login" />}
+        </Route>
+
         <Route path="/UserProfile" exact>
           {isLoggedIn ? <UserProfileList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/UserProfile/:id" exact>
+          {isLoggedIn ? <UserProfileDetails /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/editTag/:id">
+          {isLoggedIn ? <TagUpdateForm /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/tag/create">

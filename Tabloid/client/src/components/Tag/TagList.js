@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { TagCard } from "./TagCard";
-import { getAllTags, deleteTag } from "../../modules/tagManager";
+import { getAllTags, deleteTag, updateTag } from "../../modules/tagManager";
 import { useHistory } from "react-router-dom";
 
 export const TagList = () => {

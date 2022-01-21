@@ -18,3 +18,16 @@ export const getAllCommentsByPost = (id) => {
         })
     })
 }
+
+export const addComment = (newComment) => {
+    return getToken().then(token => {
+        return fetch(baseUrl, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(newComment)
+        })
+    })
+}
