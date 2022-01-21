@@ -9,5 +9,6 @@ namespace Tabloid.Repositories
 
         public void Add(Post post);
         Post GetPostById(int id);
+        void DeletePost(int id);
     }
 }

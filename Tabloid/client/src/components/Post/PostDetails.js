@@ -1,7 +1,7 @@
 import React from "react";
 import { ListGroup, ListGroupItem, Button } from "reactstrap";
 import { useEffect, useState } from "react";
-import { getPostById } from "../../modules/postManager";
+import { getPostById, deletePost } from "../../modules/postManager";
 import { useParams, useHistory } from "react-router-dom";
 
 
@@ -18,6 +18,10 @@ export const PostDetails = () => {
     useEffect(() => {
         getPost(id);
     }, []);
+
+    const clickDelete = (id) => {
+        deletePost(id).then(history.push(""))
+    }
 
     if (!post.userProfile) {
         return null;
@@ -43,9 +47,8 @@ export const PostDetails = () => {
             </ListGroup>
             <div>
                 <Button onClick={() => history.push(`/comment/${id}`)}>View Comments</Button>
-                <Button onClick={() => history.push(`/comment/${id}/create`)} >Add Comment</Button>
                 <Button onClick={() => history.push("")} >Back to List</Button>
-
+                <Button onClick={() => clickDelete(post.id)}>Delete Post</Button>
             </div>
         </>
     )
