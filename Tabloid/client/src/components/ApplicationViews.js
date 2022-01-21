@@ -9,8 +9,10 @@ import CommentList from "./Comment/CommentList";
 import UserProfileList from "./UserProfile/UserProfileList";
 import { TagForm } from "./Tag/CreateTagForm";
 import CategoryList from "./Category/CategoryList";
+import { CreateCategory } from "./Category/CreateCategoryForm";
 import { DeleteTag } from "./Tag/DeleteTag"
 import { AddComment } from "./Comment/AddComment";
+import { PostForm } from "./Post/CreatePostForm"
 
 
 export default function ApplicationViews({ isLoggedIn }) {
@@ -22,12 +24,20 @@ export default function ApplicationViews({ isLoggedIn }) {
           {isLoggedIn ? <PostList /> : <Redirect to="/login" />}
         </Route>
 
+        <Route path="/post/create" exact>
+          {isLoggedIn ? <PostForm /> : <Redirect to="/login" />}
+        </Route>
+
         <Route path="/post/:id" exact>
           {isLoggedIn ? <PostDetails /> : <Redirect to="/login" />}
         </Route>
 
-        <Route path="/Category" exact>
+        <Route path="/categories" exact>
           {isLoggedIn ? <CategoryList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/createCategory" exact>
+          {isLoggedIn ? <CreateCategory /> : <Redirect to="login" />}
         </Route>
 
         <Route path="/tag" exact>
