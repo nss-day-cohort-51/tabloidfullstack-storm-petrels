@@ -39,32 +39,23 @@ namespace Tabloid.Controllers
             return NoContent();
         }
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, Tag tag)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, Tag tag)
         {
-            try
+            if (id != tag.Id)
             {
-                tag.Id = id;
-                _tagRepository.Update(tag);
+                return BadRequest();
+            }
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View(tag);
-            }
+            _tagRepository.Update(tag);
+            return NoContent();
         }
 
-        public ActionResult Edit(int id)
+        [HttpGet("{id}")]
+        public ActionResult Index(int id)
         {
-            Tag tag = _tagRepository.GetTagById(id);
-            return View(tag);
-        }
-
-        private ActionResult View(Tag tag)
-        {
-            throw new NotImplementedException();
+            var tag = _tagRepository.GetTagById(id);
+            return Ok(tag);
         }
     }
 }
