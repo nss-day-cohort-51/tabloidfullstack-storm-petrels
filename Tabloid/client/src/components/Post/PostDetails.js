@@ -43,7 +43,9 @@ export const PostDetails = () => {
             </ListGroup>
             <div>
                 <Button onClick={() => history.push(`/comment/${id}`)}>View Comments</Button>
+                <Button onClick={() => history.push(`/comment/${id}/create`)} >Add Comment</Button>
                 <Button onClick={() => history.push("")} >Back to List</Button>
+
             </div>
         </>
     )
