@@ -119,6 +119,24 @@ namespace Tabloid.Repositories
             }
         }
 
+        public void DeletePost(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Post WHERE Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    cmd.ExecuteNonQuery();
+                }
+
+            }
+        }
+
         private Post NewPostFromReader(SqlDataReader reader)
         {
             Post post = new Post()

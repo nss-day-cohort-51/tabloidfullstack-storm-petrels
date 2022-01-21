@@ -1,7 +1,7 @@
 import React from "react";
 import { ListGroup, ListGroupItem, Button } from "reactstrap";
 import { useEffect, useState } from "react";
-import { getPostById } from "../../modules/postManager";
+import { getPostById, deletePost } from "../../modules/postManager";
 import { useParams, useHistory } from "react-router-dom";
 
 export const PostDetails = () => {
@@ -43,6 +43,7 @@ export const PostDetails = () => {
             <div>
                 <Button>View Comments</Button>
                 <Button onClick={() => history.push("")} >Back to List</Button>
+                <Button onClick={() => deletePost(post.id)}>Delete Post</Button>
             </div>
         </>
     )
