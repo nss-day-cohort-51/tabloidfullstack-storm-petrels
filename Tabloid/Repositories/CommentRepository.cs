@@ -62,7 +62,7 @@ namespace Tabloid.Repositories
             }
         }
 
-       /* public List<Comment> GetAllComments()
+        /*public List<Comment> GetAllComments()
         {
             using (var conn = Connection)
             {
@@ -109,7 +109,7 @@ namespace Tabloid.Repositories
                     }
                 }
             }
-        }
+        }*/
 
         public void Add(Comment comment)
         {
@@ -135,7 +135,7 @@ namespace Tabloid.Repositories
             }
         }
 
-        public void Update(Comment comment)
+        /*public void Update(Comment comment)
         {
             using (SqlConnection conn = Connection)
             {
@@ -155,8 +155,8 @@ namespace Tabloid.Repositories
                     cmd.ExecuteNonQuery();
                 }
             }
-        }
-*/
+        }*/
+
 
 
 
