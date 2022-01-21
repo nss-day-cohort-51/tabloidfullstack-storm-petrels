@@ -7,6 +7,7 @@ import PostDetails from "./Post/PostDetails";
 import TagList from "./Tag/TagList";
 import CommentList from "./Comment/CommentList";
 import UserProfileList from "./UserProfile/UserProfileList";
+import UserProfileDetails from "./UserProfile/UserProfileDetails";
 import { TagForm } from "./Tag/CreateTagForm";
 import CategoryList from "./Category/CategoryList";
 import { DeleteTag } from "./Tag/DeleteTag"
@@ -39,6 +40,10 @@ export default function ApplicationViews({ isLoggedIn }) {
 
         <Route path="/UserProfile" exact>
           {isLoggedIn ? <UserProfileList /> : <Redirect to="/login" />}
+        </Route>
+
+        <Route path="/UserProfile/:id" exact>
+          {isLoggedIn ? <UserProfileDetails /> : <Redirect to="/login" />}
         </Route>
 
         <Route path="/tag/create">
