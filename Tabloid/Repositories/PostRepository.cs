@@ -153,16 +153,13 @@ namespace Tabloid.Repositories
             using (var conn = Connection)
             {
                 conn.Open();
-
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Post WHERE Id = @id";
-
+                    cmd.CommandText = @"DELETE FROM Post
+                                        WHERE id = @id";
                     cmd.Parameters.AddWithValue("@id", id);
-
                     cmd.ExecuteNonQuery();
                 }
-
             }
         }
 

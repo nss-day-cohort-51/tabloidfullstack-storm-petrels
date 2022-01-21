@@ -65,12 +65,6 @@ export const deletePost = (id) => {
             headers: {
                 Authorization: `Bearer ${token}`
             }
-        }).then(res => {
-            if(res.ok){
-                return res.json()
-            } else {
-                throw new Error("An error occurred while retrieving the post")
-            }
         })
     })
 }

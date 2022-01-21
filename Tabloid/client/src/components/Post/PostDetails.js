@@ -19,6 +19,10 @@ export const PostDetails = () => {
         getPost(id);
     }, []);
 
+    const clickDelete = (id) => {
+        deletePost(id).then(history.push(""))
+    }
+
     if (!post.userProfile) {
         return null;
     }
@@ -44,7 +48,7 @@ export const PostDetails = () => {
             <div>
                 <Button onClick={() => history.push(`/comment/${id}`)}>View Comments</Button>
                 <Button onClick={() => history.push("")} >Back to List</Button>
-                <Button onClick={() => deletePost(post.id)}>Delete Post</Button>
+                <Button onClick={() => clickDelete(post.id)}>Delete Post</Button>
             </div>
         </>
     )
