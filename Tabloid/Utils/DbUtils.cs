@@ -25,6 +25,17 @@ namespace Tabloid.Utils
             return reader.GetString(ordinal);
         }
 
+        public static string GetBool(SqlDataReader reader, string column)
+        {
+            var ordinal = reader.GetOrdinal(column);
+            if (reader.IsDBNull(ordinal))
+            {
+                return null;
+            }
+
+            return reader.GetString(ordinal);
+        }
+
         /// <summary>
         ///  Get an int from a data reader object.
         ///  This method assumes the value is not NULL.
@@ -121,6 +132,11 @@ namespace Tabloid.Utils
             {
                 cmd.Parameters.AddWithValue(name, value);
             }
+        }
+
+        public static object ValueOrDBNull(object value)
+        {
+            return value ?? DBNull.Value;
         }
     }
 }
